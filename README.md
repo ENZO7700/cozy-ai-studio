@@ -131,4 +131,4 @@ Optional helpers: `VERCEL_DEPLOY_HOOK_URL`, `VERCEL_PROJECT_ID`, `VITE_AUTH_ENAB
 
 ## License
 
-Private — NEXIFY-STUDIO / Cozy AI Studio.
+Private — ENZO7700 / Cozy AI Studio (personal). Never deploy from a team/org Vercel account.
