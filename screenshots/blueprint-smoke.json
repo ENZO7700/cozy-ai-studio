@@ -1,0 +1,114 @@
+{
+  "marker": "cai-lab-blueprint-v1",
+  "version": 1,
+  "id": "bp_ms6lh5tu_ssghls",
+  "name": "Moja super kópia",
+  "createdAt": "2026-07-29T21:26:25.218Z",
+  "source": "lab",
+  "meta": {
+    "product": "cozy-ai-studio",
+    "shellRev": "studio-canvas-1",
+    "canvas": "#141414"
+  },
+  "document": {
+    "id": "doc_ms6lh4gc",
+    "name": "Cosy Lab Doc",
+    "revision": 1,
+    "nodes": [
+      {
+        "id": "root",
+        "kind": "frame",
+        "x": 40,
+        "y": 40,
+        "props": {
+          "label": "Root frame",
+          "w": "320",
+          "h": "420"
+        },
+        "parentId": null
+      },
+      {
+        "id": "n_1",
+        "kind": "text",
+        "x": 96,
+        "y": 108,
+        "props": {
+          "label": "Headline"
+        },
+        "parentId": "root"
+      }
+    ]
+  },
+  "commandLog": [
+    {
+      "id": "cmd_1",
+      "at": 1785360383991,
+      "command": {
+        "type": "node.add",
+        "parentId": "root",
+        "kind": "text",
+        "props": {
+          "label": "Headline"
+        }
+      },
+      "ok": true,
+      "message": "Added text (n_1)"
+    }
+  ],
+  "plugins": [
+    {
+      "id": "plg.a11y-audit",
+      "name": "A11y Auditor",
+      "version": "1.2.0",
+      "enabled": false,
+      "status": "idle",
+      "description": "Scans the node graph for contrast & focus traps."
+    },
+    {
+      "id": "plg.token-sync",
+      "name": "Design Token Sync",
+      "version": "0.9.4",
+      "enabled": true,
+      "status": "idle",
+      "description": "Pushes chocolate/canvas tokens into exported CSS."
+    },
+    {
+      "id": "plg.mistral-pack",
+      "name": "Mistral Plan Pack",
+      "version": "2.0.1",
+      "enabled": true,
+      "status": "idle",
+      "description": "Custom plan templates for G0 → G1 streaming."
+    },
+    {
+      "id": "plg.presence",
+      "name": "Live Presence",
+      "version": "1.0.0",
+      "enabled": false,
+      "status": "idle",
+      "description": "CRDT-style multiplayer cursors on the canvas."
+    }
+  ],
+  "studioFiles": {
+    "src/App.tsx": {
+      "path": "src/App.tsx",
+      "language": "typescript",
+      "content": "import React from \"react\";\n\nexport default function App() {\n  return (\n    <main className=\"min-h-screen bg-[#F4F1EA] text-[#1C1D21] font-sans\">\n      <header className=\"border-b border-black/10 px-6 py-4 flex items-center justify-between\">\n        <h1 className=\"font-serif text-2xl font-bold tracking-tight\">Aurora</h1>\n        <nav className=\"flex gap-6 text-sm text-black/60\">\n          <a href=\"#features\">Features</a>\n          <a href=\"#pricing\">Pricing</a>\n          <button className=\"rounded-lg bg-[#D96B43] px-4 py-2 text-white font-medium\">\n            Get started\n          </button>\n        </nav>\n      </header>\n      <section className=\"mx-auto max-w-3xl px-6 py-24 text-center\">\n        <p className=\"mb-4 text-sm font-medium tracking-widest text-[#D96B43] uppercase\">\n          Warm Brutalism\n        </p>\n        <h2 className=\"font-serif text-5xl font-bold leading-tight mb-6\">\n          Design that feels handmade\n        </h2>\n        <p className=\"text-lg text-black/60 mb-10 max-w-xl mx-auto\">\n          A starter landing page generated inside Cozy AI Studio. Edit with AI agents and watch the preview update live.\n        </p>\n        <div className=\"flex justify-center gap-3\">\n          <button className=\"rounded-xl bg-[#D96B43] px-6 py-3 text-white font-medium shadow-[4px_4px_0_#1C1D21]\">\n            Start building\n          </button>\n          <button className=\"rounded-xl border-2 border-[#1C1D21] px-6 py-3 font-medium\">\n            View demo\n          </button>\n        </div>\n      </section>\n    </main>\n  );\n}\n"
+    },
+    "src/styles.css": {
+      "path": "src/styles.css",
+      "language": "css",
+      "content": "/* Warm Brutalism tokens */\n:root {\n  --cream: #F4F1EA;\n  --charcoal: #1C1D21;\n  --terracotta: #D96B43;\n}\n\nbody {\n  margin: 0;\n  font-family: Inter, system-ui, sans-serif;\n  background: var(--cream);\n  color: var(--charcoal);\n}\n"
+    },
+    "package.json": {
+      "path": "package.json",
+      "language": "json",
+      "content": "{\n  \"name\": \"aurora-landing\",\n  \"private\": true,\n  \"version\": \"0.1.0\",\n  \"dependencies\": {\n    \"react\": \"^19.0.0\",\n    \"react-dom\": \"^19.0.0\"\n  }\n}\n"
+    }
+  },
+  "studioActiveFile": "src/App.tsx",
+  "hashes": {
+    "documentSha256": "d1735c8abc036346db6827e4b10adf8f77bba1285b161e895cec730e949204f2",
+    "filesSha256": "12cdfbeb891a3ff3438f552b600206914e0e03e0b72210ee532c251099670f79"
+  }
+}

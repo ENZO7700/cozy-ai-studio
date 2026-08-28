@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Coffee Shop Landing Page</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { margin:0; font-family: Inter, system-ui, sans-serif; background:#141414; color:#f2f3f5; }
+  header { padding:14px 18px; border-bottom:1px solid rgba(255,255,255,.08); background:#1a1a1a; }
+  header strong { color:#c48a5a; letter-spacing:.12em; font-size:12px; }
+  h1 { margin:6px 0 0; font-size:18px; font-weight:600; }
+  pre { margin:0; padding:18px; overflow:auto; font:12.5px/1.55 ui-monospace, SFMono-Regular, Menlo, monospace; white-space:pre-wrap; word-break:break-word; }
+  .hint { padding:10px 18px; font-size:12px; color:#b8bcc4; border-bottom:1px solid rgba(255,255,255,.06); }
+</style>
+</head>
+<body>
+  <header>
+    <strong>CAI PREVIEW</strong>
+    <h1>Coffee Shop Landing Page</h1>
+  </header>
+  <p class="hint">Generated component source (WebContainer runtime ships in a later sprint).</p>
+  <pre>import React, { useState } from "react";
+
+/**
+ * Self-contained coffee shop landing page — NO Tailwind (WebContainer has no Tailwind build).
+ * Styles via <style> so Live Preview always renders layout correctly.
+ */
+export default function App() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: ""
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    alert(`Thank you for your message, ${formData.name}! We'll get back to you soon.`);
+    setFormData({ name: "", email: "", message: "" });
+  };
+
+  return (
+    <>
+      <style>{`
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: Inter, system-ui, sans-serif; }
+        .page {
+          min-height: 100vh;
+          background: #F4F1EA;
+          color: #1C1D21;
+        }
+        .top {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: space-between;
+          gap: 12px;
+          padding: 16px 20px;
+          border-bottom: 1px solid rgba(28,29,33,0.1);
+        }
+        .logo {
+          font-family: Georgia, "Playfair Display", serif;
+          font-size: 1.35rem;
+          font-weight: 700;
+        }
+        .nav {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: 16px;
+          font-size: 0.875rem;
+          color: rgba(28,29,33,0.6);
+        }
+        .nav a { color: inherit; text-decoration: none; }
+        .btn {
+          background: #D96B43;
+          color: #fff;
+          border: none;
+          border-radius: 10px;
+          padding: 8px 14px;
+          font-weight: 500;
+          font-size: 0.875rem;
+          cursor: pointer;
+          box-shadow: 3px 3px 0 #1C1D21;
+        }
+        .hero {
+          max-width: 42rem;
+          margin: 0 auto;
+          padding: 64px 20px;
+          text-align: center;
+        }
+        .eyebrow {
+          font-size: 0.75rem;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          color: #D96B43;
+          font-weight: 600;
+          margin-bottom: 12px;
+        }
+        .hero h1 {
+          font-family: Georgia, "Playfair Display", serif;
+          font-size: clamp(2rem, 6vw, 3rem);
+          line-height: 1.12;
+          margin-bottom: 16px;
+        }
+        .hero p {
+          color: rgba(28,29,33,0.6);
+          font-size: 1.05rem;
+          line-height: 1.6;
+          margin-bottom: 28px;
+        }
+        .actions {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 12px;
+          justify-content: center;
+        }
+        .btn-outline {
+          background: transparent;
+          color: #1C1D21;
+          border: 2px solid #1C1D21;
+          border-radius: 12px;
+          padding: 12px 20px;
+          font-weight: 500;
+          cursor: pointer;
+        }
+        .btn-primary {
+          background: #D96B43;
+          color: #fff;
+          border: none;
+          border-radius: 12px;
+          padding: 12px 22px;
+          font-weight: 500;
+          cursor: pointer;
+          box-shadow: 4px 4px 0 #1C1D21;
+        }
+        .section {
+          padding: 40px 20px;
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+        .section-title {
+          text-align: center;
+          margin-bottom: 32px;
+          font-family: Georgia, "Playfair Display", serif;
+          font-size: 2rem;
+        }
+        .menu {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+          gap: 24px;
+        }
+        .menu-item {
+          background: #fff;
+          border-radius: 12px;
+          padding: 20px;
+          box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .menu-item img {
+          width: 100%;
+          height: 180px;
+          object-fit: cover;
+          border-radius: 8px;
+          margin-bottom: 16px;
+        }
+        .menu-item h3 {
+          font-size: 1.25rem;
+          margin-bottom: 8px;
+        }
+        .menu-item p {
+          color: rgba(28,29,33,0.6);
+          font-size: 0.95rem;
+          line-height: 1.5;
+        }
+        .hours {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+        }
+        .hours-item {
+          display: flex;
+          justify-content: space-between;
+        }
+        .hours-item span:first-child {
+          font-weight: 500;
+        }
+        .hours-item span:last-child {
+          color: rgba(28,29,33,0.6);
+        }
+        .map {
+          width: 100%;
+          height: 300px;
+          background: #eee;
+          border-radius: 12px;
+          margin-top: 24px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: rgba(28,29,33,0.6);
+        }
+        .contact-form {
+          max-width: 500px;
+          margin: 0 auto;
+        }
+        .form-group {
+          margin-bottom: 20px;
+        }
+        .form-group label {
+          display: block;
+          margin-bottom: 8px;
+          font-weight: 500;
+        }
+        .form-group input,
+        .form-group textarea {
+          width: 100%;
+          padding: 12px;
+          border: 1px solid rgba(28,29,33,0.2);
+          border-radius: 8px;
+          font-family: inherit;
+          font-size: 1rem;
+        }
+        .form-group textarea {
+          min-height: 120px;
+          resize: vertical;
+        }
+        @media (min-width: 768px) {
+          .top {
+            padding: 16px 40px;
+          }
+          .hero {
+            padding: 80px 20px;
+          }
+          .section {
+            padding: 60px 40px;
+          }
+          .hours {
+            flex-direction: row;
+            justify-content: space-between;
+          }
+        }
+      `}</style>
+      <main className="page">
+        <header className="top">
+          <div className="logo">Aurora Coffee</div>
+          <nav className="nav">
+            <a href="#menu">Menu</a>
+            <a href="#hours">Hours</a>
+            <a href="#contact">Contact</a>
+            <button type="button" className="btn">
+              Order Online
+            </button>
+          </nav>
+        </header>
+
+        <section className="hero">
+          <p className="eyebrow">Specialty Coffee in Košice</p>
+          <h1>Brewed with passion</h1>
+          <p>
+            Experience the finest coffee in the heart of Košice. Our baristas craft each cup with care and precision.
+          </p>
+          <div className="actions">
+            <button type="button" className="btn-primary">
+              View Menu
+            </button>
+            <button type="button" className="btn-outline">
+              Find Us
+            </button>
+          </div>
+        </section>
+
+        <section id="menu" className="section">
+          <h2 className="section-title">Menu Highlights</h2>
+          <div className="menu">
+            <div className="menu-item">
+              <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Espresso" />
+              <h3>Espresso</h3>
+              <p>A rich and concentrated coffee served in small portions.</p>
+            </div>
+            <div className="menu-item">
+              <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Cappuccino" />
+              <h3>Cappuccino</h3>
+              <p>A creamy espresso drink topped with steamed milk foam.</p>
+            </div>
+            <div className="menu-item">
+              <img src="https://images.unsplash.com/photo-1559496417-e7f25cb247f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Latte" />
+              <h3>Latte</h3>
+              <p>A smooth espresso drink with steamed milk and a light layer of foam.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="hours" className="section">
+          <h2 className="section-title">Hours & Location</h2>
+          <div className="hours">
+            <div>
+              <h3>Opening Hours</h3>
+              <div className="hours-item">
+                <span>Monday - Friday</span>
+                <span>7:00 AM - 6:00 PM</span>
+              </div>
+              <div className="hours-item">
+                <span>Saturday</span>
+                <span>8:00 AM - 5:00 PM</span>
+              </div>
+              <div className="hours-item">
+                <span>Sunday</span>
+                <span>Closed</span>
+              </div>
+            </div>
+            <div>
+              <h3>Location</h3>
+              <p>123 Main Street, Košice, Slovakia</p>
+              <div className="map">Map Placeholder</div>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact" className="section">
+          <h2 className="section-title">Contact Us</h2>
+          <form className="contact-form" onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="name">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                required
+              ></textarea>
+            </div>
+            <button type="submit" className="btn-primary">
+              Send Message
+            </button>
+          </form>
+        </section>
+      </main>
+    </>
+  );
+}</pre>
+</body>
+</html>

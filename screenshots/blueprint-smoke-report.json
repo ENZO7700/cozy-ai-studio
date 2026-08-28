@@ -1,0 +1,67 @@
+{
+  "passed": 12,
+  "failed": 0,
+  "results": [
+    {
+      "name": "Lab loads",
+      "pass": true,
+      "detail": "status 200"
+    },
+    {
+      "name": "Kernel add text",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Blueprint tab open",
+      "pass": true,
+      "detail": "Ulož si magiu"
+    },
+    {
+      "name": "Step1 button visible",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Step1 snapshot ready UI",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Step2 ZIP download",
+      "pass": true,
+      "detail": "9757 bytes · Moja-super-k-pia.zip"
+    },
+    {
+      "name": "JSON export for import",
+      "pass": true,
+      "detail": "4626 chars"
+    },
+    {
+      "name": "Mutate graph after export",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Step3 import restore",
+      "pass": true,
+      "detail": "import applied"
+    },
+    {
+      "name": "Progress steps visible",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "No hard console errors",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Mobile no H-overflow",
+      "pass": true,
+      "detail": "ok"
+    }
+  ],
+  "consoleErrors": []
+}

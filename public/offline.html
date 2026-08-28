@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="sk">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#3a3e46" />
+    <title>Cozy Studio — Offline</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #3a3e46;
+        --fg: #f2f3f5;
+        --muted: #d0d4dc;
+        --choco: #c48a5a;
+        --card: #4a4f58;
+        --border: rgba(242, 243, 245, 0.16);
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100dvh;
+        display: grid;
+        place-items: center;
+        padding: 1.5rem;
+        font-family: Inter, system-ui, -apple-system, sans-serif;
+        background:
+          radial-gradient(110% 70% at 15% 0%, rgba(196, 138, 90, 0.12) 0%, transparent 50%),
+          linear-gradient(165deg, #4a4f58 0%, #3a3e46 45%, #2f333a 100%);
+        color: var(--fg);
+      }
+      .card {
+        width: min(420px, 100%);
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 1.25rem;
+        padding: 1.75rem 1.5rem;
+        box-shadow: 0 14px 40px -10px rgba(0, 0, 0, 0.45);
+        text-align: center;
+      }
+      h1 {
+        margin: 0 0 0.5rem;
+        font-family: "Playfair Display", Georgia, serif;
+        font-size: 1.5rem;
+        letter-spacing: -0.02em;
+      }
+      p {
+        margin: 0 0 1.25rem;
+        color: var(--muted);
+        line-height: 1.55;
+        font-size: 0.95rem;
+      }
+      button {
+        appearance: none;
+        border: none;
+        cursor: pointer;
+        background: var(--choco);
+        color: #1a1c20;
+        font-weight: 600;
+        font-size: 0.9rem;
+        padding: 0.7rem 1.1rem;
+        border-radius: 0.75rem;
+        box-shadow: 2px 2px 0 0 #3d2314;
+      }
+      button:active {
+        transform: translate(1px, 1px);
+        box-shadow: 1px 1px 0 0 #3d2314;
+      }
+      .hint {
+        margin-top: 1rem;
+        font-size: 0.75rem;
+        color: var(--muted);
+        opacity: 0.85;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>Si offline</h1>
+      <p>
+        Cozy shell beží z cache. Sieť nie je dostupná — skús to znova,
+        keď budeš online.
+      </p>
+      <button type="button" onclick="location.reload()">Skúsiť znova</button>
+      <div class="hint">Cozy AI Studio · offline fallback</div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,435 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-cream: #f3ebe3;
+  --color-cream-dark: #e8ddd2;
+  --color-cream-deeper: #d9cbbd;
+  --color-charcoal: #1c1d21;
+  --color-charcoal-light: #2a2c32;
+  --color-charcoal-muted: #3f424a;
+  --color-choco: #6b3f24;
+  --color-choco-hover: #563219;
+  --color-choco-soft: #e8d5c4;
+  --color-choco-milk: #8b5a33;
+  --color-choco-dark: #3d2314;
+  --color-agents-blue: #7090b5;
+  --color-agents-blue-hover: #5f7fa3;
+  --color-agents-blue-soft: rgba(112, 144, 181, 0.2);
+  --color-terracotta: var(--color-choco);
+  --color-terracotta-hover: var(--color-choco-hover);
+  --color-terracotta-soft: var(--color-choco-soft);
+  /* Working canvas is always dark grey — never put light text on cream */
+  --color-canvas: #141414;
+  --color-canvas-elevated: #1c1c1c;
+  --color-canvas-dot: rgba(255, 255, 255, 0.08);
+  --color-canvas-fg: #f2f3f5;
+  --color-canvas-muted: #b8bcc4;
+  --color-silver: #6a6f78;
+  --color-silver-soft: #7e848e;
+  --color-silver-mist: #9aa0aa;
+  --color-silver-deep: #4a4e56;
+  --color-silver-ink: #e8eaed;
+  --color-silver-muted: #a8adb6;
+  --color-slate-dark: #3d4148;
+  --color-slate-card: #4f545c;
+  --color-slate-elevated: #5a5f68;
+  --color-success: #3ecf64;
+  --color-success-bg: rgba(78, 218, 104, 0.16);
+  --color-danger: #b91c1c;
+  --color-danger-bg: rgba(239, 68, 68, 0.12);
+
+  --color-background: var(--color-cream);
+  --color-foreground: #1a1c20;
+  --color-card: #fbf6f1;
+  --color-card-foreground: #1a1c20;
+  --color-muted: var(--color-cream-dark);
+  /* High-contrast secondary text (AA on cream) */
+  --color-muted-foreground: #3a3f48;
+  --color-primary: var(--color-agents-blue);
+  --color-primary-foreground: #ffffff;
+  --color-border: rgba(61, 35, 20, 0.14);
+  --color-ring: var(--color-agents-blue);
+  --color-accent: var(--color-choco-soft);
+  --color-accent-foreground: var(--color-choco-dark);
+  --color-secondary: var(--color-cream-dark);
+  --color-secondary-foreground: #1a1c20;
+  --color-destructive: var(--color-danger);
+  --color-input: rgba(61, 35, 20, 0.1);
+
+  --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "Fira Code", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.5rem;
+
+  --shadow-brutalist: 4px 4px 0px 0px #3d2314;
+  --shadow-brutalist-sm: 2px 2px 0px 0px #3d2314;
+  --shadow-glass: 0 8px 32px 0 rgba(61, 35, 20, 0.1);
+  --shadow-elevated: 0 12px 40px -8px rgba(61, 35, 20, 0.2);
+}
+
+.dark {
+  --color-background: #3a3e46;
+  --color-foreground: #f2f3f5;
+  --color-card: #4a4f58;
+  --color-card-foreground: #f2f3f5;
+  --color-muted: #34383f;
+  /* Higher contrast on gunmetal surfaces */
+  --color-muted-foreground: #d0d4dc;
+  --color-primary: #7090b5;
+  --color-primary-foreground: #ffffff;
+  --color-border: rgba(242, 243, 245, 0.16);
+  --color-ring: #8aa9cc;
+  --color-agents-blue: #7090b5;
+  --color-agents-blue-hover: #8aa9cc;
+  --color-agents-blue-soft: rgba(112, 144, 181, 0.22);
+  --color-accent: color-mix(in oklab, #8b5a33 28%, #4a4f58);
+  --color-accent-foreground: #f5e8dc;
+  --color-secondary: #555a64;
+  --color-secondary-foreground: #f2f3f5;
+  --color-destructive: #f87171;
+  --color-input: rgba(242, 243, 245, 0.1);
+  --color-success: #4eda68;
+  --color-success-bg: rgba(78, 218, 104, 0.18);
+  --color-danger: #fca5a5;
+  --color-danger-bg: rgba(248, 113, 113, 0.16);
+  --color-choco: #c48a5a;
+  --color-choco-hover: #d4a06e;
+  --color-choco-soft: rgba(196, 138, 90, 0.22);
+  --color-choco-milk: #d4a06e;
+  --color-choco-dark: #8b5a33;
+  --color-terracotta: var(--color-choco);
+  --color-terracotta-hover: var(--color-choco-hover);
+  --color-terracotta-soft: var(--color-choco-soft);
+  --color-canvas: #141414;
+  --color-canvas-elevated: #1a1a1a;
+  --color-canvas-dot: rgba(196, 138, 90, 0.14);
+  --color-canvas-fg: #f2f3f5;
+  --color-canvas-muted: #c4c8d0;
+  --shadow-brutalist: 4px 4px 0px 0px #3d2314;
+  --shadow-brutalist-sm: 2px 2px 0px 0px #3d2314;
+  --shadow-glass: 0 8px 28px 0 rgba(0, 0, 0, 0.28);
+  --shadow-elevated: 0 14px 40px -10px rgba(0, 0, 0, 0.45);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: light;
+    font-size: 16px;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    min-height: 100dvh;
+    /* iPhone 17 Air / notch devices: edge-to-edge with viewport-fit=cover */
+    min-height: -webkit-fill-available;
+    line-height: 1.6;
+    letter-spacing: 0.005em;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  html.dark body {
+    background-color: var(--color-background);
+    background-image:
+      radial-gradient(110% 70% at 15% 0%, rgba(196, 138, 90, 0.12) 0%, transparent 50%),
+      radial-gradient(90% 60% at 95% 100%, rgba(0, 0, 0, 0.35) 0%, transparent 55%),
+      linear-gradient(165deg, #4a4f58 0%, #3a3e46 45%, #2f333a 100%);
+    background-attachment: fixed;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-agents-blue) 38%, transparent);
+  }
+
+  ::placeholder {
+    color: color-mix(in oklab, var(--color-muted-foreground) 85%, transparent);
+    opacity: 1;
+  }
+}
+
+/* ── iPhone 17 Air / Dynamic Island safe areas ─────────────────
+ * Touch targets MUST sit BELOW the camera (safe-area-inset-top)
+ * and ABOVE the Home Indicator (safe-area-inset-bottom).
+ * Requires <meta name="viewport" content="…, viewport-fit=cover">.
+ * Docs: useyourloaf.com/blog/iphone-17-screen-sizes
+ *   iPhone Air: 420×912 · portrait safe top 68 / bottom 34
+ *
+ * --sat/--sab set from env(); JS may raise --sat-fallback on tall iOS
+ * when a webview reports 0 (common in in-app browsers).
+ */
+:root {
+  --sat: max(env(safe-area-inset-top, 0px), var(--sat-fallback, 0px));
+  --sab: max(env(safe-area-inset-bottom, 0px), var(--sab-fallback, 0px));
+  --sal: max(env(safe-area-inset-left, 0px), var(--sal-fallback, 0px));
+  --sar: max(env(safe-area-inset-right, 0px), var(--sar-fallback, 0px));
+}
+
+/* Full-screen app chrome (Studio, Mobile companion) — pad under island */
+.cosy-safe-shell {
+  box-sizing: border-box;
+  min-height: 100dvh;
+  min-height: -webkit-fill-available;
+  height: 100dvh;
+  height: 100svh;
+  max-height: 100dvh;
+  padding-top: var(--sat);
+  padding-bottom: var(--sab);
+  padding-left: var(--sal);
+  padding-right: var(--sar);
+}
+
+/* Scroll pages (landing): NO shell pad — sticky header owns top inset */
+.cosy-page {
+  box-sizing: border-box;
+  min-height: 100dvh;
+  min-height: -webkit-fill-available;
+  padding-left: var(--sal);
+  padding-right: var(--sar);
+  padding-bottom: var(--sab);
+}
+
+/* Sticky top bar: background paints under island; controls sit BELOW camera */
+.cosy-sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  padding-top: var(--sat);
+}
+
+/* Legacy empty spacers — zero when shell already pads (no double gap) */
+.cosy-safe-top,
+.cosy-safe-bottom {
+  display: none;
+  height: 0;
+  min-height: 0;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+/* Only use spacer mode when shell is NOT padding (opt-in) */
+.cosy-safe-shell-spacers > .cosy-safe-top {
+  display: block;
+  height: var(--sat);
+  min-height: var(--sat);
+}
+.cosy-safe-shell-spacers > .cosy-safe-bottom {
+  display: block;
+  height: var(--sab);
+  min-height: var(--sab);
+}
+.cosy-safe-shell-spacers {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.cosy-safe-bottom-pad {
+  /* Extra breathing room above Home Indicator when shell already padded */
+  padding-bottom: 0.25rem;
+}
+
+.cosy-safe-x {
+  padding-left: max(0.75rem, var(--sal));
+  padding-right: max(0.75rem, var(--sar));
+}
+
+/* Fixed overlays (HitL, modals) — above Home Indicator, never under camera */
+.cosy-fixed-bottom {
+  bottom: max(0.75rem, var(--sab));
+  padding-left: max(0.75rem, var(--sal));
+  padding-right: max(0.75rem, var(--sar));
+}
+
+.cosy-fixed-top {
+  top: max(0.5rem, var(--sat));
+  padding-left: max(0.75rem, var(--sal));
+  padding-right: max(0.75rem, var(--sar));
+}
+
+/* Readable body copy helper */
+.prose-cosy {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--color-foreground);
+}
+
+.prose-cosy p + p {
+  margin-top: 0.75em;
+}
+
+.prose-cosy .lead {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--color-muted-foreground);
+}
+
+/* Labels: avoid sub-11px micro type */
+.label-caps {
+  font-size: 0.75rem;
+  line-height: 1.35;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+  opacity: 1;
+}
+
+.meta-text {
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--color-muted-foreground);
+}
+
+.bg-canvas {
+  background-color: var(--color-canvas);
+  color: var(--color-canvas-fg);
+}
+
+.text-canvas-fg {
+  color: var(--color-canvas-fg);
+}
+
+.text-canvas-muted {
+  color: var(--color-canvas-muted);
+}
+
+.bg-dots-pattern {
+  background-color: var(--color-canvas);
+  background-image: radial-gradient(var(--color-canvas-dot) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+.glass {
+  background: color-mix(in oklab, var(--color-card) 88%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.dark .glass {
+  background: color-mix(in oklab, var(--color-card) 78%, rgba(196, 138, 90, 0.06));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    var(--shadow-glass);
+}
+
+.diff-add {
+  background: var(--color-success-bg);
+  color: var(--color-success);
+}
+
+.diff-del {
+  background: var(--color-danger-bg);
+  color: var(--color-danger);
+}
+
+@keyframes agent-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(0.92);
+  }
+}
+
+.agent-pulse {
+  animation: agent-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes stream-caret {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.stream-caret::after {
+  content: "▋";
+  margin-left: 2px;
+  animation: stream-caret 0.9s step-end infinite;
+  color: var(--color-choco);
+}
+
+.cosy-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.cosy-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.cosy-scroll::-webkit-scrollbar-thumb {
+  background: color-mix(in oklab, var(--color-foreground) 22%, transparent);
+  border-radius: 999px;
+}
+.cosy-scroll::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in oklab, var(--color-foreground) 34%, transparent);
+}
+
+@keyframes accept-pulse-once {
+  0% {
+    box-shadow: 0 0 0 0 rgba(217, 107, 67, 0.55);
+    transform: scale(1);
+  }
+  40% {
+    box-shadow: 0 0 0 10px rgba(217, 107, 67, 0);
+    transform: scale(1.03);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(217, 107, 67, 0);
+    transform: scale(1);
+  }
+}
+
+.accept-pulse-once {
+  animation: accept-pulse-once 1.1s ease-out 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .agent-pulse,
+  .stream-caret::after,
+  .accept-pulse-once {
+    animation: none;
+  }
+  * {
+    transition-duration: 0.01ms !important;
+  }
+}
