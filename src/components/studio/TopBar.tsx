@@ -81,7 +81,7 @@ export function TopBar() {
   };
 
   return (
-    <header className="flex h-12 shrink-0 items-center justify-between gap-2 border-b border-border bg-card/80 px-3 sm:px-4 backdrop-blur-md cosy-safe-x">
+    <header className="relative z-40 flex h-12 shrink-0 items-center justify-between gap-2 border-b border-border bg-card/80 px-3 sm:px-4 backdrop-blur-md cosy-safe-x">
       <div className="flex items-center gap-2.5 min-w-0">
         <Link to="/" className="flex items-center gap-2 shrink-0 group">
           <CozyLogo
@@ -190,7 +190,7 @@ export function TopBar() {
             <MoreHorizontal className="h-4 w-4" />
           </Button>
           {moreOpen && (
-            <div className="absolute right-0 top-[calc(100%+6px)] z-50 w-52 rounded-xl border border-border bg-card p-1 shadow-[var(--shadow-elevated)]">
+            <div className="absolute right-0 top-[calc(100%+6px)] z-[60] w-52 rounded-xl border border-border bg-card p-1 shadow-[var(--shadow-elevated)]">
               <button
                 type="button"
                 className="flex min-h-10 w-full items-center gap-2 rounded-lg px-2.5 py-2 text-left text-xs hover:bg-muted"
