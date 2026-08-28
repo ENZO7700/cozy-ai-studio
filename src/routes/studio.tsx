@@ -1,5 +1,12 @@
+import { lazy, Suspense } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { StudioShell } from "@/components/studio/StudioShell";
+import { StudioErrorBoundary } from "@/components/studio/StudioErrorBoundary";
+
+const StudioShell = lazy(() =>
+  import("@/components/studio/StudioShell").then((m) => ({
+    default: m.StudioShell,
+  })),
+);
 
 export const Route = createFileRoute("/studio")({
   component: StudioPage,
@@ -10,5 +17,20 @@ export const Route = createFileRoute("/studio")({
 });
 
 function StudioPage() {
-  return <StudioShell />;
+  return (
+    <StudioErrorBoundary>
+      <Suspense
+        fallback={
+          <div
+            className="flex min-h-dvh items-center justify-center text-sm"
+            style={{ background: "#f4efe6", color: "#1c1d21" }}
+          >
+            Načítavam Studio…
+          </div>
+        }
+      >
+        <StudioShell />
+      </Suspense>
+    </StudioErrorBoundary>
+  );
 }

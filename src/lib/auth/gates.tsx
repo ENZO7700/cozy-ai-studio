@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import { Navigate } from "@tanstack/react-router";
-import { authEnabled, signOut } from "./client";
 import { useCurrentUser, useCurrentUserState } from "./use-current-user";
 
 /**
@@ -49,12 +48,18 @@ export function RedirectToSignIn({ to = SIGN_IN_PATH }: { to?: string }) {
  * `design-ui` skill). Sign-out is only shown when auth is enabled (the
  * disabled-auth dev user has nothing to sign out of).
  */
-export function UserButton() {
+export function UserButton({ onOpen }: { onOpen?: () => void }) {
   const user = useCurrentUser();
   if (!user) return null;
   const label = user.displayName ?? user.primaryEmail ?? "Account";
   return (
-    <div className="flex items-center gap-2">
+    <button
+      type="button"
+      onClick={() => onOpen?.()}
+      className="flex min-h-10 items-center gap-2 rounded-xl px-1.5 hover:bg-muted"
+      aria-label="Nastavenia"
+      title="Nastavenia"
+    >
       {user.profileImageUrl ? (
         <img
           src={user.profileImageUrl}
@@ -66,16 +71,7 @@ export function UserButton() {
           {label.charAt(0).toUpperCase()}
         </span>
       )}
-      <span className="text-sm font-medium">{label}</span>
-      {authEnabled && (
-        <button
-          type="button"
-          onClick={() => void signOut()}
-          className="cursor-pointer text-sm underline-offset-4 opacity-70 hover:underline"
-        >
-          Sign out
-        </button>
-      )}
-    </div>
+      <span className="max-w-[9rem] truncate text-sm font-medium">{label}</span>
+    </button>
   );
 }

@@ -150,6 +150,7 @@ interface StudioState {
   previewHtml: string;
   previewKey: number;
   commandOpen: boolean;
+  settingsOpen: boolean;
   mobilePanel: "studio" | "chat" | "preview";
   publishUrl: string | null;
   showcase: ShowcaseProject[];
@@ -173,6 +174,7 @@ interface StudioState {
   setDevice: (device: DeviceType) => void;
   setActiveFile: (path: string) => void;
   setCommandOpen: (open: boolean) => void;
+  setSettingsOpen: (open: boolean) => void;
   setMobilePanel: (panel: "studio" | "chat" | "preview") => void;
   setPlanTier: (tier: PlanTier) => void;
   setQuota: (q: {
@@ -662,6 +664,7 @@ export const useStudioStore = create<StudioState>()(
       previewHtml: STARTER_PREVIEW,
       previewKey: 0,
       commandOpen: false,
+      settingsOpen: false,
       mobilePanel: "chat",
       publishUrl: null,
       showcase: [
@@ -731,6 +734,7 @@ export const useStudioStore = create<StudioState>()(
         });
       },
       setCommandOpen: (open) => set({ commandOpen: open }),
+      setSettingsOpen: (open) => set({ settingsOpen: open }),
       setMobilePanel: (panel) => set({ mobilePanel: panel }),
       setPlanTier: (tier) =>
         set({ planTier: tier, promptLimit: tier === "FREE" ? 100 : tier === "PRO" ? 10_000 : 1_000_000 }),

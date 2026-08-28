@@ -14,6 +14,8 @@ import { HitLApprovalCard } from "./HitLApprovalCard";
 import { RejectionPoll } from "./RejectionPoll";
 import { CommandPalette } from "./CommandPalette";
 import { ProductionLaunchHost } from "./ProductionLaunch";
+import { SettingsSheet } from "./SettingsSheet";
+import { StudioErrorBoundary } from "./StudioErrorBoundary";
 import { cn } from "@/lib/utils";
 import { useBillingSync } from "@/hooks/useBillingSync";
 import { applyShareRemix } from "@/lib/share-preview";
@@ -32,6 +34,14 @@ function useIsDesktop() {
 }
 
 export function StudioShell() {
+  return (
+    <StudioErrorBoundary>
+      <StudioShellInner />
+    </StudioErrorBoundary>
+  );
+}
+
+function StudioShellInner() {
   useBillingSync();
 
   const theme = useStudioStore((s) => s.theme);
@@ -148,6 +158,7 @@ export function StudioShell() {
       <RejectionPoll />
       <CommandPalette />
       <ProductionLaunchHost />
+      <SettingsSheet />
     </div>
   );
 }

@@ -18,6 +18,7 @@ import {
   WifiOff,
   FlaskConical,
   Download,
+  Settings,
 } from "lucide-react";
 import { useStudioStore } from "@/stores/studio-store";
 import { runStudioPipeline } from "@/lib/ai/run-studio-pipeline";
@@ -33,6 +34,7 @@ export function CommandPalette() {
   const setActiveFile = useStudioStore((s) => s.setActiveFile);
   const refreshPreview = useStudioStore((s) => s.refreshPreview);
   const setProductionLaunchOpen = useStudioStore((s) => s.setProductionLaunchOpen);
+  const setSettingsOpen = useStudioStore((s) => s.setSettingsOpen);
   const navigate = useNavigate();
   const { canInstall, showIosHint, promptInstall } = usePwaInstall();
 
@@ -95,6 +97,14 @@ export function CommandPalette() {
                 }}
               />
             )}
+            <Item
+              icon={Settings}
+              label="Nastavenia"
+              onSelect={() => {
+                setCommandOpen(false);
+                setSettingsOpen(true);
+              }}
+            />
             <Item
               icon={Rocket}
               label="Deploy / limits"

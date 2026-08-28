@@ -8,6 +8,7 @@ import {
   Cloud,
   CloudOff,
   MoreHorizontal,
+  Settings,
 } from "lucide-react";
 import { useStudioStore } from "@/stores/studio-store";
 import { Button } from "@/components/ui/button";
@@ -26,6 +27,7 @@ export function TopBar() {
   const theme = useStudioStore((s) => s.theme);
   const toggleTheme = useStudioStore((s) => s.toggleTheme);
   const setCommandOpen = useStudioStore((s) => s.setCommandOpen);
+  const setSettingsOpen = useStudioStore((s) => s.setSettingsOpen);
   const setMobilePanel = useStudioStore((s) => s.setMobilePanel);
   const planTier = useStudioStore((s) => s.planTier);
   const promptsUsed = useStudioStore((s) => s.promptsUsed);
@@ -180,7 +182,7 @@ export function TopBar() {
             type="button"
             variant="ghost"
             size="icon"
-            className="h-8 w-8"
+            className="h-10 w-10"
             aria-label="Viac možností"
             aria-expanded={moreOpen}
             onClick={() => setMoreOpen((v) => !v)}
@@ -191,7 +193,7 @@ export function TopBar() {
             <div className="absolute right-0 top-[calc(100%+6px)] z-50 w-52 rounded-xl border border-border bg-card p-1 shadow-[var(--shadow-elevated)]">
               <button
                 type="button"
-                className="flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-left text-xs hover:bg-muted"
+                className="flex min-h-10 w-full items-center gap-2 rounded-lg px-2.5 py-2 text-left text-xs hover:bg-muted"
                 onClick={() => {
                   setMoreOpen(false);
                   setCommandOpen(true);
@@ -203,7 +205,7 @@ export function TopBar() {
               </button>
               <button
                 type="button"
-                className="flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-left text-xs hover:bg-muted"
+                className="flex min-h-10 w-full items-center gap-2 rounded-lg px-2.5 py-2 text-left text-xs hover:bg-muted"
                 onClick={() => {
                   setMoreOpen(false);
                   void navigate({ to: "/showcase" });
@@ -214,7 +216,7 @@ export function TopBar() {
               </button>
               <button
                 type="button"
-                className="flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-left text-xs hover:bg-muted"
+                className="flex min-h-10 w-full items-center gap-2 rounded-lg px-2.5 py-2 text-left text-xs hover:bg-muted"
                 onClick={() => {
                   setMoreOpen(false);
                   void navigate({ to: "/pricing", search: {} });
@@ -224,7 +226,7 @@ export function TopBar() {
               </button>
               <button
                 type="button"
-                className="flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-left text-xs hover:bg-muted"
+                className="flex min-h-10 w-full items-center gap-2 rounded-lg px-2.5 py-2 text-left text-xs hover:bg-muted"
                 onClick={() => {
                   setMoreOpen(false);
                   toggleTheme();
@@ -237,6 +239,17 @@ export function TopBar() {
                 )}
                 {theme === "dark" ? "Svetlý motív" : "Tmavý motív"}
               </button>
+              <button
+                type="button"
+                className="flex min-h-10 w-full items-center gap-2 rounded-lg px-2.5 py-2 text-left text-xs hover:bg-muted"
+                onClick={() => {
+                  setMoreOpen(false);
+                  setSettingsOpen(true);
+                }}
+              >
+                <Settings className="h-3.5 w-3.5 text-muted-foreground" />
+                Nastavenia
+              </button>
             </div>
           )}
         </div>
@@ -244,13 +257,13 @@ export function TopBar() {
         {authEnabled && (
           <div className="hidden sm:flex items-center shrink-0">
             <SignedIn>
-              <UserButton />
+              <UserButton onOpen={() => setSettingsOpen(true)} />
             </SignedIn>
             <SignedOut>
               <Link
                 to="/login"
                 search={{ redirect: "/studio" }}
-                className="text-xs font-medium px-2.5 h-8 inline-flex items-center rounded-xl border border-border hover:border-choco/40"
+                className="text-xs font-medium px-2.5 min-h-10 inline-flex items-center rounded-xl border border-border hover:border-choco/40"
               >
                 Sign in
               </Link>
