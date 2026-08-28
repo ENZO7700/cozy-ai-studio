@@ -1,0 +1,32 @@
+# Deploys ENZO7700/cozy-ai-studio to the Hobby Vercel project that owns canvas.h4ck3d.me.
+# Needs repo secret VERCEL_TOKEN (Vercel → Account Settings → Tokens).
+name: Deploy canvas.h4ck3d.me
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - name: Deploy to Vercel (production)
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: team_BXCElAbttbOcMCY1zcsnWISc
+          VERCEL_PROJECT_ID: prj_kN7E41Uih4LaGFr3XAzlQolkcvN0
+        run: |
+          if [ -z "$VERCEL_TOKEN" ]; then
+            echo "Missing repo secret VERCEL_TOKEN"
+            echo "Create at https://vercel.com/account/tokens then:"
+            echo "  gh secret set VERCEL_TOKEN -R ENZO7700/cozy-ai-studio"
+            exit 1
+          fi
+          npx --yes vercel@41 pull --yes --environment=production --token "$VERCEL_TOKEN"
+          npx --yes vercel@41 build --prod --token "$VERCEL_TOKEN"
+          npx --yes vercel@41 deploy --prebuilt --prod --token "$VERCEL_TOKEN" --yes
